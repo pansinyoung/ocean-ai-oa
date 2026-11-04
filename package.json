@@ -1,0 +1,22 @@
+{
+  "name": "certificate-admin-console",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "server",
+    "web"
+  ],
+  "scripts": {
+    "setup": "npm install && npm run seed && npm run build && npm start",
+    "dev": "concurrently -k \"npm run dev -w server\" \"npm run dev -w web\"",
+    "seed": "npm run seed -w server",
+    "gen100k": "npm run gen100k -w server",
+    "verify": "npm run verify -w server",
+    "build": "npm run build -w server && npm run build -w web",
+    "start": "npm run start -w server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0",
+    "typescript": "^5.6.3"
+  }
+}
